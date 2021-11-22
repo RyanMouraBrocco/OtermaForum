@@ -14,5 +14,11 @@ namespace OtermaForum.Api.Controllers.Base
         {
 
         }
+
+        protected int GetUserId()
+        {
+            var currentUser = HttpContext.User;
+            return int.Parse(currentUser.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+        }
     }
 }

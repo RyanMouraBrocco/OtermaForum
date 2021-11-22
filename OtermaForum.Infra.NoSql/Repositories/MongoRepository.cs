@@ -40,9 +40,9 @@ namespace OtermaForum.Infra.NoSql.Repositories
             await _collection.ReplaceOneAsync(filterById, value);
         }
 
-        public async Task<TDto> GetOneByIdAsync(ObjectId id)
+        public async Task<TDto> GetOneByIdAsync(string id)
         {
-            return (await _collection.FindAsync(x => x.Id == id)).FirstOrDefault();
+            return (await _collection.FindAsync(x => x.Id == new ObjectId(id))).FirstOrDefault();
         }
 
         public IQueryable<TDto> GetAll()

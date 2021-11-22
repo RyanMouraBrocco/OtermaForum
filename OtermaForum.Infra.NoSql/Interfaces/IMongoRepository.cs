@@ -12,7 +12,7 @@ namespace OtermaForum.Infra.NoSql.Interfaces
     {
         Task InsertAsync(TDto value);
         Task UpdateAsync(ObjectId id, TDto value);
-        Task<TDto> GetOneByIdAsync(ObjectId id);
+        Task<TDto> GetOneByIdAsync(string id);
         IQueryable<TDto> GetAll();
     }
 }

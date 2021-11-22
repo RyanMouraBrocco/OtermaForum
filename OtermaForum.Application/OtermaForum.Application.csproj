@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlSanitizer" Version="6.0.453" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OtermaForum.Domain\OtermaForum.Domain.csproj" />
+    <ProjectReference Include="..\OtermaForum.Infra.NoSql\OtermaForum.Infra.NoSql.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,6 +13,7 @@ namespace OtermaForum.Domain.Entities
         public string Description { get; set; }
         public object OriginPostId { get; set; }
         public Post OriginPost { get; set; }
+        public object CreatorId { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public IList<Image> Images { get; set; }
