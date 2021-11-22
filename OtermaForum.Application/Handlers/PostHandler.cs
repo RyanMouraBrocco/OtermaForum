@@ -39,9 +39,9 @@ namespace OtermaForum.Application.Handlers
                 Images = request.Images
             };
 
-            await _postRepository.InsertAsync(newPost.MapToDto());
+            var insertedPost = (await _postRepository.InsertAsync(newPost.MapToDto())).MapToDomain();
 
-            return newPost;
+            return insertedPost;
         }
 
         public async Task<Post> Handle(CreateCommentCommandRequest request, CancellationToken cancellationToken)
@@ -63,9 +63,9 @@ namespace OtermaForum.Application.Handlers
                 OriginPost = originPostCheck
             };
 
-            await _postRepository.InsertAsync(newComment.MapToDto());
+            var insertedComment = (await _postRepository.InsertAsync(newComment.MapToDto())).MapToDomain();
 
-            return newComment;
+            return insertedComment;
         }
 
         public async Task<IEnumerable<Post>> Handle(GetAllPostsCommandRequest request, CancellationToken cancellationToken)

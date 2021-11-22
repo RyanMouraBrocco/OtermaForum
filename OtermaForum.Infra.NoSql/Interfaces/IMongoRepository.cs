@@ -10,8 +10,8 @@ namespace OtermaForum.Infra.NoSql.Interfaces
 {
     public interface IMongoRepository<TDto> where TDto : BaseDto
     {
-        Task InsertAsync(TDto value);
-        Task UpdateAsync(ObjectId id, TDto value);
+        Task<TDto> InsertAsync(TDto value);
+        Task<TDto> UpdateAsync(ObjectId id, TDto value);
         Task<TDto> GetOneByIdAsync(string id);
         IQueryable<TDto> GetAll();
     }

@@ -15,14 +15,14 @@ namespace OtermaForum.Infra.NoSql.Mappers
         {
             return new Post()
             {
-                Id = dto.Id,
+                Id = dto.Id.ToString(),
                 Title = dto.Title,
                 Description = dto.Description,
                 CreationDate = dto.CreationDate,
                 CreatorId = dto.CreatorId,
                 OriginPost = dto.OriginPost?.MapToDomain(),
                 Images = dto.Images?.Select(x => x.MapToDomain()).ToList() ?? new List<Image>(),
-                OriginPostId = dto.OriginPostId,
+                OriginPostId = dto.OriginPostId?.ToString(),
                 UpdateDate = dto.UpdateDate
             };
         }
@@ -31,14 +31,14 @@ namespace OtermaForum.Infra.NoSql.Mappers
         {
             return new PostDto()
             {
-                Id = (ObjectId)entity.Id,
+                Id = entity.Id != null ? new ObjectId((string)entity.Id) : new ObjectId(),
                 Title = entity.Title,
                 Description = entity.Description,
                 CreationDate = entity.CreationDate,
                 CreatorId = entity.CreatorId,
                 OriginPost = entity.OriginPost?.MapToDto(),
                 Images = entity.Images?.Select(x => x.MapToDto()).ToList() ?? new List<ImageDto>(),
-                OriginPostId = (ObjectId)entity.OriginPostId,
+                OriginPostId = entity.OriginPostId != null ? new ObjectId((string)entity.OriginPostId) : null,
                 UpdateDate = entity.UpdateDate
             };
         }

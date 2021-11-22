@@ -11,9 +11,7 @@ namespace OtermaForum.Application.Commands.Requests
 {
     public class CreateCommentCommandRequest : IRequest<Post>, IRequest<CreateCommentCommandRequest>
     {
-        [Required]
         public object UserId { get; private set; }
-        [Required(ErrorMessage = "OriginPost is required")]
         public object OriginPostId { get; private set; }
         [Required(ErrorMessage = "Title is required")]
         [StringLength(200, MinimumLength = 1, ErrorMessage = "Title must have value")]

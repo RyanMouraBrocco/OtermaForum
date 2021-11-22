@@ -14,7 +14,7 @@ namespace OtermaForum.Infra.NoSql.Dtos
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public ObjectId OriginPostId { get; set; }
+        public ObjectId? OriginPostId { get; set; }
         public PostDto OriginPost { get; set; }
         public object CreatorId { get; set; }
         public DateTime CreationDate { get; set; }

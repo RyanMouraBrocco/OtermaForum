@@ -29,15 +29,17 @@ namespace OtermaForum.Infra.NoSql.Repositories
             return ((MongoCollectionAttribute)typeof(TDto).GetCustomAttributes(typeof(MongoCollectionAttribute), true).First()).CollectionName;
         }
 
-        public async Task InsertAsync(TDto value)
+        public async Task<TDto> InsertAsync(TDto value)
         {
             await _collection.InsertOneAsync(value);
+            return value;
         }
 
-        public async Task UpdateAsync(ObjectId id, TDto value)
+        public async Task<TDto> UpdateAsync(ObjectId id, TDto value)
         {
             var filterById = Builders<TDto>.Filter.Eq(x => x.Id, id);
             await _collection.ReplaceOneAsync(filterById, value);
+            return value;
         }
 
         public async Task<TDto> GetOneByIdAsync(string id)
